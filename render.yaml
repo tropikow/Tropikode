@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: landing
+    env: php
+    buildCommand: ""
+    startCommand: "php-fpm"
+    plan: free
+    rootDir: landing
+    envVars:
+      - key: WORDPRESS_DB_HOST
+        value: YOUR_DB_HOST
+      - key: WORDPRESS_DB_NAME
+        value: YOUR_DB_NAME
+      - key: WORDPRESS_DB_USER
+        value: YOUR_DB_USER
+      - key: WORDPRESS_DB_PASSWORD
+        value: YOUR_DB_PASSWORD

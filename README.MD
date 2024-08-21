@@ -87,11 +87,42 @@ Additional Commands
   ```sh
   docker build -t <nombre_contenedor> . 
   ```
+  ## NOTA: En este caso la etiqueta -t representa el tag (nombre del contenedor, sin esta etiqueta se creará un id por defecto dificil de recordarselo)
 
 - Para correr la imagen docker :
   ```sh
   docker run -p <puerto_local>:<puerto_de_la_imagen> <nombre_contenedor>
   ```
+  ## NOTA : En este caso la etiqueta -p representa el puerto , puerto local es cual puerto quieres dedicar del host y puerto de la imagen es hacia que puerto de la imagen esta apuntando (Se puede encontrar en EXPOSE : <P>)
+
+- Para correr la imagen docker en background : 
+  ```sh
+  docker run -dp <puerto_local>:<puerto_de_la_imagen> <nombre_contenedor>
+  ````
+
+  ## NOTA : En este caso las etiqueta -dp significa d : detached (ejecuta el contenedor en segundo plano), p : mapea puertos entre el contenedor y el 
+  
+- Para mantener la persistencia de los datos debes mapear la ruta de los datos : 
+  ```sh
+  docker run -d -v /ruta1/ruta2/ruta3/(si existe alguna variable = ruta4:/variable)/ruta5 -p 8080 <nombre_contenedor>
+  ```
+
+  ## NOTA : En el caso de este archivo me mantengo en la carpeta Tropikode, en la raiz de Tropikode se encuentra archivo como Dockerfile y wordpress, teniendo esto en cuenta y según como se encuestra estructurado wordpress la ruta seria esta : 
+
+  ```sh
+  docker run -d -v wordpress/wp-content/uploads -p 8080:80 wordpress-image
+  ```
+
+- Para guardar cambios automaticos y que se escriban directamente en el contenedor sin reiniciarlo :
+
+  ```sh
+  docker run -d -v /ruta/local1:/ruta/en/contenedor1 -v /ruta/local2:/ruta/en/contenedor2 -p 8080:80 wordpress-image
+  ```
+  ## Nota : docker run mapeara los volumenes locales a los volumenes dentro de la imagen , posterior a ello es recomendable volver a construir la imagen con docker build, si quieres puedes tambien taguearla para el versionado semantico de la imagen , ejemplo : 
+
+  ````
+  docker build -t <nombre_contenedor>:v2 .
+  ````
 
 ¿Problemas ? Aquí algunas soluciones :
 

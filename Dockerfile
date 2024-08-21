@@ -4,9 +4,11 @@ FROM wordpress:6.6.1-php8.1-apache
 WORKDIR /var/www/html
 
 # Instalar extensiones de PostgreSQL
-RUN apt-get update && \
-    apt-get install -y libpq-dev && \
-    docker-php-ext-install pdo pdo_pgsql
+RUN apt-get update \
+    && apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+    
 
 # Copiar archivos del directorio 'wordpress' al contenedor
 COPY wordpress/ .

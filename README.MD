@@ -77,7 +77,6 @@ Additional Commands
     docker exec -it <id_contenedor> /bin/bash
   ```
 
-
 - Para buscar en la lista de imagenes descargadas palabras claves especificadas:
   ```sh
     docker images |grep <palabra_clave>
@@ -120,9 +119,49 @@ Additional Commands
   ```
   ## Nota : docker run mapeara los volumenes locales a los volumenes dentro de la imagen , posterior a ello es recomendable volver a construir la imagen con docker build, si quieres puedes tambien taguearla para el versionado semantico de la imagen , ejemplo : 
 
-  ````
+  ```` 
   docker build -t <nombre_contenedor>:v2 .
   ````
+
+- Para iniciar una red de contenedor:
+  ```sh
+  docker network create <nombre_red>
+  ```
+
+- Para ver todas las redes creadas:
+  ```sh
+  docker network ls 
+  ```
+
+- Para conectar los contenedores creados a una red:
+  ```sh
+  docker run -d --network <nombre_red> --network-alias <nombre_de_alias> -p <puerto_host>:<puerto_de_la_imagen> <nombre_contenedor>
+  ```
+
+- Para inspeccionar los contenedores creados a una red:
+  ```sh
+  docker network inspect <nombre_red>
+  ```
+
+- Para desconectar los contenedores creados a una red:
+  ```sh
+  docker network disconnect <nombre_red> <nombre_alias>
+  ```
+
+- Para conectar un contenedor a una red y mapear el volumen :
+  ```sh
+    docker run -d --network <nombre_red> --network-alias <nombre_alias> -v $(pwd):/usr/src/app -p <puerto_host>:<puerto_imagen> <nombre_imagen>
+  ```
+
+- Para paralizar desde la terminal de comando un contenedor:
+  ```sh
+  docker stop <nombre_contenedor>
+  ```
+
+- Para eliminar desde la terminal de comando un contenedor:
+  ```sh
+  docker rm <nombre_contenedor>
+  ```
 
 ¿Problemas ? Aquí algunas soluciones :
 

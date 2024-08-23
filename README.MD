@@ -163,6 +163,31 @@ Additional Commands
   docker rm <nombre_contenedor>
   ```
 
+- Para ver los logs de un contenedor:
+  ```sh
+  docker logs <id_contenedor>
+  ```
+
+- Para ver el contenido del contenedor:
+  ```sh
+  docker run -i --rm <imagen> /bin/sh
+  ```
+
+- Para levantar imagenes que tuvierón algún problema o que no fueron subidas inicialmente:
+  ```sh
+  docker-compose up -d
+  ```
+
+- Para levantar docker-compose :
+  ```sh
+  docker-compose up --build
+  ```
+
+- Para levantar docker-compose en background:
+  ```sh
+  docker-compose up -d --build
+  ```
+
 ¿Problemas ? Aquí algunas soluciones :
 
 ## ERROR: failed to solve: process "/bin/sh -c apt-get update && apt-get install -y wget unzip     && wget https://github.com/kevinoid/postgresql-for-wordpress/archive/refs/heads/master.zip -O /tmp/pg4wp.zip     && unzip /tmp/pg4wp.zip -d /tmp     && mv /tmp/postgresql-for-wordpress-master/db.php /var/www/html/wp-content     && mv /tmp/postgresql-for-wordpress-master/pg4wp /var/www/html/wp-content/plugins" did not complete successfully: exit code: 8

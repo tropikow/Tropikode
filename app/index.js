@@ -4,7 +4,7 @@ const PORT = 3000;
 
 app.get('/',(req,res)=>{
   console.log('inicio')
-  res.status(200).send('Holass mundo')
+  res.status(200).send('Hola mundo desde wordpress')
 })
 
 app.listen(PORT, () => {

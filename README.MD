@@ -2,201 +2,200 @@
 
 ## Verifying Images
 
-- Verifica si la imagen está disponible en la biblioteca de Docker Hub: [Docker Hub](https://hub.docker.com)
+To verify if an image is available in the Docker Hub library, you can visit [Docker Hub](https://hub.docker.com).
 
 ## Running Images
 
-- Para ejecutar una imagen:
-  ```sh
-  docker run <nombre_imagen>
+To run an image, use the following command:
+```sh
+docker run <image_name>
 ```
 
-- Para ejecutar una imagen específica con una versión:
-  ```sh
-  docker run <nombre_imagen>:<etiqueta>
+To run a specific version of an image, use the following command:
+```sh
+docker run <image_name>:<tag>
 ```
 
-- Para ejecutar una imagen en segundo plano:
-  ```sh
-  docker run -d <nombre_imagen>
+To run an image in the background, use the following command:
+```sh
+docker run -d <image_name>
 ```
 
 ## Managing Images
 
-- Para ver las imágenes instaladas:
-  ```sh
-  docker images
+To view the installed images, use the following command:
+```sh
+docker images
 ```
 
-- Para descargar una imagen sin ejecutarla automáticamente:
-  ```sh
-docker pull <nombre_imagen>
+To download an image without automatically running it, use the following command:
+```sh
+docker pull <image_name>
 ```
 
-- Para eliminar una imagen:
-  ```sh
-docker rmi <nombre_imagen>
+To delete an image, use the following command:
+```sh
+docker rmi <image_name>
 ```
 
 ## Managing Containers
 
-- Para ver los contenedores en ejecución:
-  ```sh
-    docker ps
+To view the running containers, use the following command:
+```sh
+docker ps
 ```
 
-- Para ver todos los contenedores (en ejecución y detenidos):
-  ```sh
-    docker ps -a
+To view all containers (running and stopped), use the following command:
+```sh
+docker ps -a
 ```
 
-- Para ver los logs de un contenedor:
-  ```sh
-    docker logs -f <id_contenedor>
-  ```
+To view the logs of a container, use the following command:
+```sh
+docker logs -f <container_id>
+```
 
-- Para ejecutar un comando dentro de un contenedor en ejecución:
-  ```sh
-    docker exec -it <id_contenedor> <comando>
-  ```
+To execute a command inside a running container, use the following command:
+```sh
+docker exec -it <container_id> <command>
+```
 
-- Para detener un contenedor en ejecución:
-  ```sh
-    docker stop <id_contenedor>
-  ```
+To stop a running container, use the following command:
+```sh
+docker stop <container_id>
+```
 
 Additional Commands
 
-- Para iniciar un contenedor detenido:
-  ```sh
-    docker start <id_contenedor>
-  ```
+To start a stopped container, use the following command:
+```sh
+docker start <container_id>
+```
 
-- Para acceder a un contenedor en ejecución:
-  ```sh
-    docker exec -it <id_contenedor> /bin/bash
-  ```
+To access a running container, use the following command:
+```sh
+docker exec -it <container_id> /bin/bash
+```
 
-- Para buscar en la lista de imagenes descargadas palabras claves especificadas:
-  ```sh
-    docker images |grep <palabra_clave>
-  ```
+To search for specific keywords in the list of downloaded images, use the following command:
+```sh
+docker images | grep <keyword>
+```
 
-- Para construir una imagen docker 
-  ```sh
-  docker build -t <nombre_contenedor> . 
-  ```
-  ## NOTA: En este caso la etiqueta -t representa el tag (nombre del contenedor, sin esta etiqueta se creará un id por defecto dificil de recordarselo)
+To build a Docker image, use the following command:
+```sh
+docker build -t <container_name> .
+```
+Note: In this case, the -t flag represents the tag (name of the container). Without this flag, a default ID will be assigned.
 
-- Para correr la imagen docker :
-  ```sh
-  docker run -p <puerto_local>:<puerto_de_la_imagen> <nombre_contenedor>
-  ```
-  ## NOTA : En este caso la etiqueta -p representa el puerto , puerto local es cual puerto quieres dedicar del host y puerto de la imagen es hacia que puerto de la imagen esta apuntando (Se puede encontrar en EXPOSE : <P>)
+To run a Docker image, use the following command:
+```sh
+docker run -p <local_port>:<image_port> <container_name>
+```
+Note: In this case, the -p flag represents the port. The local port is the port on the host machine, and the image port is the port the image is listening on (can be found in EXPOSE: <P>).
 
-- Para correr la imagen docker en background : 
-  ```sh
-  docker run -dp <puerto_local>:<puerto_de_la_imagen> <nombre_contenedor>
-  ````
+To run a Docker image in the background, use the following command:
+```sh
+docker run -dp <local_port>:<image_port> <container_name>
+```
 
-  ## NOTA : En este caso las etiqueta -dp significa d : detached (ejecuta el contenedor en segundo plano), p : mapea puertos entre el contenedor y el 
-  
-- Para mantener la persistencia de los datos debes mapear la ruta de los datos : 
-  ```sh
-  docker run -d -v /ruta1/ruta2/ruta3/(si existe alguna variable = ruta4:/variable)/ruta5 -p 8080 <nombre_contenedor>
-  ```
+Note: In this case, the -dp flags mean d: detached (run the container in the background) and p: map ports between the container and the host.
 
-  ## NOTA : En el caso de este archivo me mantengo en la carpeta Tropikode, en la raiz de Tropikode se encuentra archivo como Dockerfile y wordpress, teniendo esto en cuenta y según como se encuestra estructurado wordpress la ruta seria esta : 
+To persist data, you can map the data path using the following command:
+```sh
+docker run -d -v /path1/path2/path3/(if there is a variable = path4:/variable)/path5 -p 8080 <container_name>
+```
 
-  ```sh
-  docker run -d -v wordpress/wp-content/uploads -p 8080:80 wordpress-image
-  ```
+Note: In the case of this file, assuming it is located in the Tropikode folder, and considering the structure of the WordPress project, the path would be:
+```sh
+docker run -d -v wordpress/wp-content/uploads -p 8080:80 wordpress-image
+```
 
-- Para guardar cambios automaticos y que se escriban directamente en el contenedor sin reiniciarlo :
+To save changes automatically and write them directly to the container without restarting it, use the following command:
+```sh
+docker run -d -v /local_path1:/container_path1 -v /local_path2:/container_path2 -p 8080:80 wordpress-image
+```
 
-  ```sh
-  docker run -d -v /ruta/local1:/ruta/en/contenedor1 -v /ruta/local2:/ruta/en/contenedor2 -p 8080:80 wordpress-image
-  ```
-  ## Nota : docker run mapeara los volumenes locales a los volumenes dentro de la imagen , posterior a ello es recomendable volver a construir la imagen con docker build, si quieres puedes tambien taguearla para el versionado semantico de la imagen , ejemplo : 
+Note: After mapping the local volumes to the volumes inside the image, it is recommended to rebuild the image using `docker build`. You can also tag it for semantic versioning of the image, for example:
+```sh
+docker build -t <container_name>:v2 .
+```
 
-  ```` 
-  docker build -t <nombre_contenedor>:v2 .
-  ````
+To create a container network, use the following command:
+```sh
+docker network create <network_name>
+```
 
-- Para iniciar una red de contenedor:
-  ```sh
-  docker network create <nombre_red>
-  ```
+To view all created networks, use the following command:
+```sh
+docker network ls
+```
 
-- Para ver todas las redes creadas:
-  ```sh
-  docker network ls 
-  ```
+To connect containers to a network, use the following command:
+```sh
+docker run -d --network <network_name> --network-alias <alias_name> -p <host_port>:<image_port> <container_name>
+```
 
-- Para conectar los contenedores creados a una red:
-  ```sh
-  docker run -d --network <nombre_red> --network-alias <nombre_de_alias> -p <puerto_host>:<puerto_de_la_imagen> <nombre_contenedor>
-  ```
+To inspect containers connected to a network, use the following command:
+```sh
+docker network inspect <network_name>
+```
 
-- Para inspeccionar los contenedores creados a una red:
-  ```sh
-  docker network inspect <nombre_red>
-  ```
+To disconnect containers from a network, use the following command:
+```sh
+docker network disconnect <network_name> <alias_name>
+```
 
-- Para desconectar los contenedores creados a una red:
-  ```sh
-  docker network disconnect <nombre_red> <nombre_alias>
-  ```
+To connect a container to a network and map a volume, use the following command:
+```sh
+docker run -d --network <network_name> --network-alias <alias_name> -v $(pwd):/usr/src/app -p <host_port>:<image_port> <image_name>
+```
 
-- Para conectar un contenedor a una red y mapear el volumen :
-  ```sh
-    docker run -d --network <nombre_red> --network-alias <nombre_alias> -v $(pwd):/usr/src/app -p <puerto_host>:<puerto_imagen> <nombre_imagen>
-  ```
+To stop a container from the command line, use the following command:
+```sh
+docker stop <container_name>
+```
 
-- Para paralizar desde la terminal de comando un contenedor:
-  ```sh
-  docker stop <nombre_contenedor>
-  ```
+To remove a container from the command line, use the following command:
+```sh
+docker rm <container_name>
+```
 
-- Para eliminar desde la terminal de comando un contenedor:
-  ```sh
-  docker rm <nombre_contenedor>
-  ```
+To view the logs of a container, use the following command:
+```sh
+docker logs <container_id>
+```
 
-- Para ver los logs de un contenedor:
-  ```sh
-  docker logs <id_contenedor>
-  ```
+To view the contents of a container, use the following command:
+```sh
+docker run -i --rm <image> /bin/sh
+```
 
-- Para ver el contenido del contenedor:
-  ```sh
-  docker run -i --rm <imagen> /bin/sh
-  ```
+To recover images that had issues or were not initially uploaded, use the following command:
+```sh
+docker-compose up -d
+```
 
-- Para levantar imagenes que tuvierón algún problema o que no fueron subidas inicialmente:
-  ```sh
-  docker-compose up -d
-  ```
+To start docker-compose, use the following command:
+```sh
+docker-compose up --build
+```
 
-- Para levantar docker-compose :
-  ```sh
-  docker-compose up --build
-  ```
+To stop docker-compose, use the following command:
+```sh
+docker-compose down
+```
 
-- Para detener docker-compose:
-  ```sh
-  docker-compose down
-  ```
+To start docker-compose in the background, use the following command:
+```sh
+docker-compose up -d --build
+```
 
-- Para levantar docker-compose en background:
-  ```sh
-  docker-compose up -d --build
-  ```
-
-¿Problemas ? Aquí algunas soluciones :
+Having issues? Here are some solutions:
 
 ## ERROR: failed to solve: process "/bin/sh -c apt-get update && apt-get install -y wget unzip     && wget https://github.com/kevinoid/postgresql-for-wordpress/archive/refs/heads/master.zip -O /tmp/pg4wp.zip     && unzip /tmp/pg4wp.zip -d /tmp     && mv /tmp/postgresql-for-wordpress-master/db.php /var/www/html/wp-content     && mv /tmp/postgresql-for-wordpress-master/pg4wp /var/www/html/wp-content/plugins" did not complete successfully: exit code: 8
-R. Indica que ha fallado el proceso donde se actualizan las dependencias y se obtiene otras, en este caso estaba apuntando a instalar dentro de la imagen el archivo "https://github.com/kevinoid/postgresql-for-wordpress/archive/refs/heads/master.zip" esta era un archivo zip que posteriormente debia descomprimirlo, ¿para que servia este archivo? , basicamente este archivo me daba el plugin pgp4wp, de este archivo obtenia el archivo db.php que basicamente interceptaba los datos que son enviados hacia una base de datos mysql, los cambia a postgresql y tambien se asegura de cargar una vez, depuración de logs y demás, personalmente también debes asegurarte de obtener el archivo wp-config.php, este archivo si no lo tienes lo puedes crear y copiar el contenido del archivo wp-config.sample a el archivo nuevo que acabas de crear , posteriormente debes apuntar los datos como host, contraseñas,usuario y demás a tu base de datos, al obtener estas configuraciones y te sale el mismo problema puedes descargar manualmente el archivo pgp4wp desde este repositorio : "https://github.com/PostgreSQL-For-Wordpress/postgresql-for-wordpress", este repositorio ya tiene las instrucciones para instalar el archivo y te vuelve a dar unos pasos que ya he mencionado anteriormente.
+This error indicates that the process of updating dependencies and obtaining other files has failed. In this case, it was trying to install the "https://github.com/kevinoid/postgresql-for-wordpress/archive/refs/heads/master.zip" file, which is a zip file that needs to be extracted. This file provides the pgp4wp plugin, which intercepts data sent to a MySQL database, converts it to PostgreSQL, and also handles logging and other features. If you encounter this issue, you can manually download the pgp4wp file from the repository "https://github.com/PostgreSQL-For-Wordpress/postgresql-for-wordpress". This repository provides instructions on how to install the file, as mentioned earlier.
 
 ## Your PHP installation appears to be missing the PostgreSQL extension which is required by WordPress with PG4WP.
-R. https://forums.docker.com/t/your-php-installation-appears-to-be-missing-the-postgresql-extension-which-is-required-by-wordpress-with-pg4wp/74117
+If you encounter this error, please refer to this forum thread for a solution: [Your PHP installation appears to be missing the PostgreSQL extension which is required by WordPress with PG4WP](https://forums.docker.com/t/your-php-installation-appears-to-be-missing-the-postgresql-extension-which-is-required-by-wordpress-with-pg4wp/74117).
+

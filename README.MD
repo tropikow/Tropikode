@@ -183,6 +183,11 @@ Additional Commands
   docker-compose up --build
   ```
 
+- Para detener docker-compose:
+  ```sh
+  docker-compose down
+  ```
+
 - Para levantar docker-compose en background:
   ```sh
   docker-compose up -d --build

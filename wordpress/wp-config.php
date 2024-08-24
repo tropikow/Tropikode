@@ -1,15 +1,15 @@
 <?php
 // ** Configuración de la base de datos ** //
-define('DB_NAME', 'landing_db_wuyr');
-define('DB_USER', 'landing_db_wuyr_user');
-define('DB_PASSWORD', 'zShM0fVFlwHsZbHNA18Jgi8lPPedGkIj');
-define('DB_HOST', 'dpg-cqptqtrqf0us73959860-a.oregon-postgres.render.com'); // Por ejemplo, 'localhost' o la URL de tu base de datos en Render
+define('DB_NAME', getenv('DB_NAME'));
+define('DB_USER', getenv('DB_USER'));
+define('DB_PASSWORD', getenv('DB_PASSWORD'));
+define('DB_HOST', getenv('DB_HOST'));
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 // Configuración para PostgreSQL
 define('DB_TYPE', 'pgsql');
-define('DB_PORT', '5432'); // Puerto predeterminado para PostgreSQL
+define('DB_PORT', getenv('DB_PORT')); // Puerto para PostgreSQL
 
 $table_prefix = 'wp_';
 

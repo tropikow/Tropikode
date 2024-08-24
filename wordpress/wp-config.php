@@ -18,6 +18,10 @@ define( 'DB_CHARSET', 'utf8' );
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
+// Configuración para PostgreSQL
+define('DB_TYPE', 'pgsql');
+define('DB_PORT', getenv('DB_PORT')); // Puerto para PostgreSQL
+
 define( 'AUTH_KEY',         getenv('AUTH_KEY') );
 define( 'SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY') );
 define( 'LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY') );

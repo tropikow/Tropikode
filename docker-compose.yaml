@@ -22,7 +22,7 @@ services:
     volumes:
       - ./wordpress:/var/www/html
     ports:
-      - 8080:80
+      - 80:80
     command: ["apache2-foreground"]
 
 networks:

@@ -1,4 +1,4 @@
-FROM wordpress:6.6.1-php8.1-apache
+FROM docker:dind
 
 # Establecer el directorio de trabajo
 WORKDIR /var/www/html

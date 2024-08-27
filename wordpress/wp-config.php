@@ -15,6 +15,11 @@ $table_prefix = 'wp_';
 
 define('WP_DEBUG', false);
 
+// Configuración del proxy
+define('WP_PROXY_HOST', '192.168.84.101'); // Cambia esto si es necesario
+define('WP_PROXY_PORT', '80'); // Cambia esto si está configurado en 8080
+define('WP_PROXY_BYPASS_HOSTS', 'localhost, www.example.com, *.wordpress.org');
+
 if ( !defined('ABSPATH') )
     define('ABSPATH', dirname(__FILE__) . '/');
 

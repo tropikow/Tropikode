@@ -1,23 +1,13 @@
 FROM docker:dind
 
-# Establecer el directorio de trabajo
-WORKDIR /var/www/html
+WORKDIR /app
 
-# Instalar extensiones de PostgreSQL
-RUN apt-get update \
-    && apt-get install -y libpq-dev \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pdo_pgsql pgsql
-    
+COPY scripts/docker-compose.yaml .
+COPY scripts/.env .
+COPY scripts/entrypoint.sh /usr/local/bin/
 
-# Copiar archivos del directorio 'wordpress' al contenedor
-COPY . .
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Configurar ServerName en Apache
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+EXPOSE 8080
 
-# Exponer el puerto 80
-EXPOSE 80
-
-# Comando para iniciar Apache
-CMD ["apache2-foreground"]
+ENTRYPOINT ["entrypoint.sh"]

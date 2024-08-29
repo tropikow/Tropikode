@@ -1,13 +1,11 @@
-FROM docker:dind
+FROM wordpress:6.6.1-php8.1-apache
 
-WORKDIR /app
+WORKDIR /var/www/html
 
-COPY scripts/docker-compose.yaml .
-COPY scripts/.env .
-COPY scripts/entrypoint.sh /usr/local/bin/
+COPY . .
 
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN apt-get update && apt-get install
 
-EXPOSE 8080
+EXPOSE 80
 
-ENTRYPOINT ["entrypoint.sh"]
+CMD ["apache2-foreground"]

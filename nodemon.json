@@ -1,6 +1,6 @@
 {
   "watch":[    
-    "app"
+    "app","index.js"
   ],
   "ext": "js,json",
   "ignore":["node_modules"],

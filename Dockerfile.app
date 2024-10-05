@@ -1,12 +1,13 @@
-FROM node:14
+FROM node:18
 
 WORKDIR /app
 
-COPY */app/package*.json ./
+COPY app/package*.json ./
 
-RUN npm install
+## Install app dependencies
+RUN npm install && npm run build
 
-COPY */app .
+COPY app .
 
 EXPOSE 3000
 

@@ -1,4 +1,7 @@
-### ignore node_modules
-.package-lock.json
-### ignore .env files
+# Node dependencies
+node_modules
+
+# Local env files
 .env
+.env.*
+!.env.example

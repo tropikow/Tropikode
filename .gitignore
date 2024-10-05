@@ -1,7 +1,3 @@
-# Logs
-package-lock.json
-package-lock.json.*
-
 # Node dependencies
 node_modules
 

@@ -1,12 +1,8 @@
 const express = require('express');
 const app = express();
-const path = require('path');
-const dotenv = require('dotenv');
+const config = require('./config/index');
 
-const envFile = process.env === 'production' ? '.env' : '.env.dev';
-dotenv.config({path: envFile})
-
-const PORT = process.env.PORT || 3000;
+const PORT = config.PORT || 3000;
 
 if(process.env.NODE_ENV === 'production'){
   app.listen(PORT,()=>{

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const config = require('./backend/src/config/index.js');
+const config = require('./backend/config/index.js');
 
 const PORT = config.PORT || 3000;
 

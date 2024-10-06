@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-export const config = {
+const config = {
   PORT : process.env.PORT,
 };
+
+module.exports = config;

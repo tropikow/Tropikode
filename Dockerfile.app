@@ -5,7 +5,7 @@ WORKDIR /app
 COPY app/package*.json ./
 
 ## Install app dependencies
-RUN npm install && npm run build
+RUN npm install && npm run build && npm run generate
 
 COPY app .
 

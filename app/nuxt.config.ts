@@ -14,12 +14,12 @@ export default defineNuxtConfig({
   }, 
   $production: {
     routeRules: {
-      // '/**': {isr: true}
+      '/**': {isr: true}
     }
   },
   $development: {
     routeRules: {
-      // '/**': {isr: true}
+      '/**': {isr: false}
     }
   }
 })

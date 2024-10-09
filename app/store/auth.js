@@ -1,3 +1,7 @@
-export const state = () => ({
-  auth: false,
-});
+const getDefaultState = () => {
+  return {
+    authenticated: false,
+  }
+}
+
+export const state = () => getDefaultState()

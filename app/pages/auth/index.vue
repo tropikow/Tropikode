@@ -1,5 +1,5 @@
 <template>
-  <div>    
+  <div>
     <CommonLoading />
   </div>
 </template>

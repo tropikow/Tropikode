@@ -1,0 +1,8 @@
+{
+  "watch":[    
+    "app","index.js"
+  ],
+  "ext": "js,json",
+  "ignore":["node_modules"],
+  "exec": "node -r dotenv/config index.js"
+}

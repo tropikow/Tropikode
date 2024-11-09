@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Topikode Home">
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    .card img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .card h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #333;
+    }
+    .card p {
+      color: #666;
+      margin: 0.5rem 0 1rem;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #0073b1;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .message {
+      margin-top: 2rem;
+      color: #999;
+    }
+  </style>
+
+  <div class="container">
+    <div class="card">
+      <img src="../../public/assets/logo.webp" alt="Your Image" />
+      <h1>Tropikode</h1>
+      <p>Hi there! We're excited to launch this site and can't wait to welcome you!.</p>
+      <a href="https://www.linkedin.com/in/jovannyruizlovera/" target="_blank">Connect on LinkedIn</a>
+      <div class="message">
+        <p>Our website is under construction. We'll be here soon with our new awesome site.</p>
+      </div>
+    </div>
+  </div>
+</Layout>
